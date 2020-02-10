@@ -1,11 +1,11 @@
-import paySystem from "./PaySystem.js";
-import validateNum from "./ValidateNum.js";
-import choiceCard from "./ChoiceCard.js";
+import paySystem from './PaySystem.js';
+import validateNum from './ValidateNum.js';
+import choiceCard from './ChoiceCard.js';
 
 export default class ValidateCard {
   constructor(parentEl) {
     this.parentEl = parentEl;
-    this.inputText = "";
+    this.inputText = '';
   }
 
   static get markup() {
@@ -30,11 +30,11 @@ export default class ValidateCard {
 
   bindToDOM() {
     this.parentEl.innerHTML = this.constructor.markup;
-    const submit = this.parentEl.querySelector(".valid-card");
-    this.inputText = this.parentEl.querySelector("[id=input]");
-    submit.addEventListener("submit", e => this.onSubmit(e));
-    this.inputText.addEventListener("keypress", e => this.onKeypress(e));
-    this.inputText.addEventListener("input", () => this.onInput());
+    const submit = this.parentEl.querySelector('.valid-card');
+    this.inputText = this.parentEl.querySelector('[id=input]');
+    submit.addEventListener('submit', (e) => this.onSubmit(e));
+    this.inputText.addEventListener('keypress', (e) => this.onKeypress(e));
+    this.inputText.addEventListener('input', () => this.onInput());
   }
 
   onSubmit(e) {
@@ -49,7 +49,7 @@ export default class ValidateCard {
       choiceCard(paySystem(this.inputText.value));
     }
 
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       this.validateCard(this.inputText.value);
     }
   }
@@ -60,9 +60,9 @@ export default class ValidateCard {
 
   validateCard(numCard) {
     if (numCard.length < 1 || !validateNum(numCard)) {
-      this.inputText.className = "invalid";
+      this.inputText.className = 'invalid';
       return;
     }
-    this.inputText.className = "valid";
+    this.inputText.className = 'valid';
   }
 }

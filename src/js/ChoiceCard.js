@@ -1,5 +1,5 @@
 export default function choiceCard(card) {
-  const imgCards = document.getElementsByClassName("img-card");
+  const imgCards = document.getElementsByClassName('img-card');
   for (const item of imgCards) {
     item.style.opacity = 0.3;
   }
